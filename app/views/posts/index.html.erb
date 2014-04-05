@@ -1,2 +1,16 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<table class="table table-striped table-bordered table-condensed">
+<tr><td>Title</td><td>Author</td><td>Date posted</td>
+<% @posts.each do |post| %>
+  <tr>
+  <td><%= link_to(post.title, post_path(post)) %></td>
+  <td><%= post.user.email %></td>
+  <td><%= post.created_at.strftime('%B %d, %Y, at %l:%M%P') %></td>
+  <tr/>
+<% end %>
+</table>
+
+<% if user_signed_in? %>
+<button class="btn btn-primary">New Post</button>
+<% else %>
+<p>Sign in to add new posts.</p>
+<% end %>
