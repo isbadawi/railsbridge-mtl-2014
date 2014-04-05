@@ -11,7 +11,7 @@ class RepliesController < ApplicationController
       redirect_to post_path(@post)
     else
       flash.now[:alert] = @reply.errors.full_messages.join('<br/>')
-      render template: 'replies/new'
+      render template: 'posts/show'
     end
   end
 

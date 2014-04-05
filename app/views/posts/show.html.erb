@@ -5,13 +5,6 @@
   <div class="panel-body"><%= @post.content %></div>
 </div>
 
-<% if user_signed_in? %>
-<%= button_to "New Reply", new_post_reply_path(@post),
-              class: "btn btn-primary", method: :get %>
-<% else %>
-<p>Sign in to add new posts.</p>
-<% end %>
-
 <hr>
 <h1>Replies</h1>
 <% @post.replies.each do |reply| %>
@@ -22,4 +15,19 @@
      <%= reply.created_at.strftime('%B %e %Y, %l:%M%P')%></small>
   </div>
   </div>
+<% end %>
+
+<% if user_signed_in? %>
+  <h1>New reply</h1>
+  <div class="well">
+  <%= form_for [@post, @reply], :html => {:class => "form"} do |f| %>
+    <div class="form-group">
+      <%= f.label :content %>
+      <%= f.text_area :content, size: "60x12", class: "form-control" %>
+    </div>
+    <button type="submit" class="btn btn-primary">Reply</button>
+  <% end %>
+  </div>
+<% else %>
+  <p>Sign in to reply to this post.</p>
 <% end %>
