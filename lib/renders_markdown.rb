@@ -1,4 +1,10 @@
 require 'redcarpet'
+require 'rouge'
+require 'rouge/plugins/redcarpet'
+
+class HighlightedHTML < Redcarpet::Render::HTML
+  include Rouge::Plugins::Redcarpet
+end
 
 module RendersMarkdown
   ENABLED_EXTENSIONS = {
@@ -8,8 +14,7 @@ module RendersMarkdown
   }
 
   def self.renderer
-    @renderer ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML,
-                                          ENABLED_EXTENSIONS)
+    @renderer ||= Redcarpet::Markdown.new(HighlightedHTML, ENABLED_EXTENSIONS)
   end
 
   def self.render(text)
