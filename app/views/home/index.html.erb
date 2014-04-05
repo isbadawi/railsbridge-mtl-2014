@@ -1,3 +1,6 @@
 <h1>Hello! You are logged in as <%= current_user.email %>.</h1>
-<p>For now, all you can do is <%= link_to('log out', destroy_user_session_path, :method => :delete) %>.</p>
+<p>For now, all you can do is
+<%= link_to('log out', destroy_user_session_path, :method => :delete) %>
+or
+<%= link_to('change your password', edit_user_registration_path) %>.</p>
 <p>Stay tuned for more functionality.</p>
