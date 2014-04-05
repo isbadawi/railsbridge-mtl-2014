@@ -4,7 +4,7 @@ class PostsController < ApplicationController
     if @post.valid?
       redirect_to post_path(@post)
     else
-      flash[:alert] = @post.errors.full_messages.join('<br/>')
+      flash.now[:alert] = @post.errors.full_messages.join('<br/>')
       render template: 'posts/new'
     end
   end
