@@ -1,6 +1,0 @@
-<% if user_signed_in? %>
-<h1>Hello! You are logged in as <%= current_user.email %>.</h1>
-<p>If you'd like, you can have a go at <%= link_to('adding a post', new_post_path) %>.</p>
-<% else %>
-<h1>Hello! You are not signed in.</h1>
-<% end %>

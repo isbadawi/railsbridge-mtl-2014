@@ -9,9 +9,6 @@ class PostsController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def index
     @posts = Post.order('created_at DESC')
   end
@@ -23,12 +20,6 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @reply = Reply.new
-  end
-
-  def update
-  end
-
-  def destroy
   end
 
   private
