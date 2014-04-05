@@ -8,7 +8,8 @@ module RendersMarkdown
   }
 
   def self.renderer
-    Redcarpet::Markdown.new(Redcarpet::Render::HTML, ENABLED_EXTENSIONS)
+    @renderer ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML,
+                                          ENABLED_EXTENSIONS)
   end
 
   def self.render(text)

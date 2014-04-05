@@ -2,14 +2,14 @@
   <div class="panel-heading"><h1 class="panel-title"><%= @post.title %></h1>
   <small>posted by <%= @post.user.email %>
      on <%= @post.created_at.strftime('%B %e, %Y, %l:%M%P') %></small></div>
-  <div class="panel-body"><%= @post.rendered_content.html_safe %></div>
+  <div class="panel-body"><%= render_markdown(@post.content) %></div>
 </div>
 
 <hr>
 <h1>Replies</h1>
 <% @post.replies.each do |reply| %>
   <div class="panel panel-default">
-  <div class="panel-body"><%= reply.rendered_content.html_safe %></div>
+  <div class="panel-body"><%= render_markdown(reply.content) %></div>
   <div class="panel-footer">
   <small><%= reply.user.email %> on
      <%= reply.created_at.strftime('%B %e %Y, %l:%M%P')%></small>
