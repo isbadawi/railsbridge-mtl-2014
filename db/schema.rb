@@ -11,11 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140405152517) do
+ActiveRecord::Schema.define(version: 20140405181048) do
 
   create_table "posts", force: true do |t|
     t.integer  "user_id",                 null: false
     t.string   "title",      default: "", null: false
+    t.text     "content",    default: "", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "replies", force: true do |t|
+    t.integer  "post_id",                 null: false
+    t.integer  "user_id",                 null: false
     t.text     "content",    default: "", null: false
     t.datetime "created_at"
     t.datetime "updated_at"

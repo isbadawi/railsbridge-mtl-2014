@@ -1,0 +1,10 @@
+<h1>Reply to "<%= @post.title %>"</h1>
+<div class="well">
+<%= form_for [@post, @reply], :html => {:class => "form"} do |f| %>
+  <div class="form-group">
+    <%= f.label :content %>
+    <%= f.text_area :content, size: "60x12", class: "form-control" %>
+  </div>
+  <button type="submit" class="btn btn-primary">Reply</button>
+<% end %>
+</div>

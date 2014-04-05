@@ -4,3 +4,22 @@
      on <%= @post.created_at.strftime('%B %e, %Y, %l:%M%P') %></small></div>
   <div class="panel-body"><%= @post.content %></div>
 </div>
+
+<% if user_signed_in? %>
+<%= button_to "New Reply", new_post_reply_path(@post),
+              class: "btn btn-primary", method: :get %>
+<% else %>
+<p>Sign in to add new posts.</p>
+<% end %>
+
+<hr>
+<h1>Replies</h1>
+<% @post.replies.each do |reply| %>
+  <div class="panel panel-default">
+  <div class="panel-body"><%= reply.content %></div>
+  <div class="panel-footer">
+  <small><%= reply.user.email %> on
+     <%= reply.created_at.strftime('%B %e %Y, %l:%M%P')%></small>
+  </div>
+  </div>
+<% end %>
