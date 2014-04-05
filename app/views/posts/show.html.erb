@@ -1,2 +1,6 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<div class="panel panel-default">
+  <div class="panel-heading"><h1 class="panel-title"><%= @post.title %></h1>
+  <small>posted by <%= @post.user.email %>
+     on <%= @post.created_at.strftime('%B %e, %Y, %l:%M%P') %></small></div>
+  <div class="panel-body"><%= @post.content %></div>
+</div>
